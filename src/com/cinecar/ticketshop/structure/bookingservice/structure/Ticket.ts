@@ -5,7 +5,6 @@ export class Ticket {
     private id: number;
     private movieScreening: MovieScreening;
     private booking: Booking;
-    private price: number;
 
     public getId(): number {
         return this.id;
@@ -29,13 +28,5 @@ export class Ticket {
 
     public setBooking(booking: Booking): void {
         this.booking = booking;
-    }
-
-    public getPrice(): number {
-        return this.price;
-    }
-
-    public setPrice(price: number): void {
-        this.price = price;
     }
 }
