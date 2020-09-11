@@ -4,6 +4,9 @@ export class Movie {
     private id: number;
     private name: string;
     private duration: number;
+    private price: number;
+    private imageUrl: string;
+
     private movieScreenings: Array<MovieScreening>;
 
     public getId(): number {
@@ -36,5 +39,21 @@ export class Movie {
 
     public setMovieScreenings(movieScreening: Array<MovieScreening>): void {
         this.movieScreenings = movieScreening;
+    }
+
+    public getPrice(): number {
+        return this.price;
+    }
+
+    public setPrice(price: number): void {
+        this.price = price;
+    }
+
+    public getImageUrl(): string {
+        return this.imageUrl;
+    }
+
+    public setImageUrl(imageUrl: string): void {
+        this.imageUrl = imageUrl;
     }
 }
