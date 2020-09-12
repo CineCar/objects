@@ -42,9 +42,11 @@ export class Booking {
     public toJSON(): any {
         const tickets = [];
 
-        this.getTickets().forEach((ticket: Ticket) => {
-            tickets.push(ticket.toJSON(true));
-        });
+        if (this.getTickets() != null) {
+            this.getTickets().forEach((ticket: Ticket) => {
+                tickets.push(ticket.toJSON(true));
+            });
+        }
 
         return {
             id: this.id,
