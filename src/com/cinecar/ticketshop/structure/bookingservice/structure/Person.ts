@@ -27,6 +27,14 @@ export class Person {
         this.lastname = lastname;
     }
 
+    public toJSON(): any {
+        return {
+            id: this.id,
+            firstname: this.firstname,
+            lastname: this.lastname,
+        };
+    }
+
     public static fromJSON(json): Person {
         const person: Person = new Person();
 

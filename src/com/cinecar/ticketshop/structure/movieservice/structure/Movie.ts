@@ -57,6 +57,25 @@ export class Movie {
         this.imageUrl = imageUrl;
     }
 
+    public toJSON(parent: boolean = false): any {
+        const movieScreenings = [];
+
+        if (this.movieScreenings && parent) {
+            this.movieScreenings.forEach((movieScreening: MovieScreening) => {
+                movieScreenings.push(movieScreening.toJSON());
+            });
+        }
+
+        return {
+            id: this.id,
+            name: this.name,
+            duration: this.duration,
+            price: this.price,
+            imageUrl: this.imageUrl,
+            movieScreenings: movieScreenings,
+        };
+    }
+
     public static fromJSON(json): Movie {
         const movie: Movie = new Movie();
         movie.setId(json.id);

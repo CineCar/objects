@@ -39,6 +39,21 @@ export class Booking {
         this.cancelled = cancelled;
     }
 
+    public toJSON(): any {
+        const tickets = [];
+
+        this.getTickets().forEach((ticket: Ticket) => {
+            tickets.push(ticket.toJSON(true));
+        });
+
+        return {
+            id: this.id,
+            cancelled: this.cancelled,
+            person: this.person.toJSON(),
+            tickets: tickets,
+        };
+    }
+
     public static fromJSON(json): Booking {
         const booking: Booking = new Booking();
 

@@ -20,6 +20,15 @@ export class User {
         this.password = password;
     }
 
+    public toJSON(): any {
+        let json = {
+            id: this.id,
+            password: this.password,
+        };
+
+        return json;
+    }
+
     public static fromJSON(json): User {
         const user: User = new User();
 

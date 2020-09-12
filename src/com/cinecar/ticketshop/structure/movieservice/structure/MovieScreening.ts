@@ -29,6 +29,19 @@ export class MovieScreening {
         this.datetime = datetime;
     }
 
+    public toJSON(parent: boolean = false): any {
+        let json = {
+            id: this.id,
+            name: this.datetime,
+        };
+
+        if (parent) {
+            json["movie"] = this.movie.toJSON();
+        }
+
+        return json;
+    }
+
     public static fromJSON(json): MovieScreening {
         const movieScreening: MovieScreening = new MovieScreening();
 

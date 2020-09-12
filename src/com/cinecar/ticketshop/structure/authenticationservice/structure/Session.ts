@@ -29,6 +29,19 @@ export class Session {
         this.user = user;
     }
 
+    public toJSON(parent: boolean = false) {
+        let json = {
+            id: this.id,
+            token: this.token,
+        };
+
+        if (parent && this.user) {
+            json["user"] = this.user.toJSON();
+        }
+
+        return json;
+    }
+
     public static fromJSON(json): Session {
         const session: Session = new Session();
 

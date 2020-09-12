@@ -30,6 +30,19 @@ export class Ticket {
         this.booking = booking;
     }
 
+    public toJSON(parent: boolean = false): any {
+        let json = {
+            id: this.id,
+            movieScreening: this.movieScreening.toJSON(true),
+        };
+
+        if (parent) {
+            json["booking"] = this.booking.toJSON();
+        }
+
+        return json;
+    }
+
     public static fromJSON(json): Ticket {
         const ticket: Ticket = new Ticket();
 

@@ -29,6 +29,20 @@ export class Cart {
         this.creationDate = creationDate;
     }
 
+    public toJSON(): any {
+        const tickets = [];
+
+        this.getTickets().forEach((ticket: Ticket) => {
+            tickets.push(ticket.toJSON(true));
+        });
+
+        return {
+            id: this.id,
+            creationDate: this.creationDate,
+            tickets: tickets,
+        };
+    }
+
     public static fromJSON(json): Cart {
         const cart: Cart = new Cart();
 
