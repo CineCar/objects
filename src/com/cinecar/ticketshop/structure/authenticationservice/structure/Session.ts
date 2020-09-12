@@ -28,4 +28,15 @@ export class Session {
     public setUser(user: User): void {
         this.user = user;
     }
+
+    public static fromJSON(json): Session {
+        const session: Session = new Session();
+
+        session.setId(json.id);
+        session.setToken(json.token);
+
+        if (json.user) session.setUser(User.fromJSON(json.user));
+
+        return session;
+    }
 }

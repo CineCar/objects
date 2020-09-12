@@ -29,4 +29,15 @@ export class Ticket {
     public setBooking(booking: Booking): void {
         this.booking = booking;
     }
+
+    public static fromJSON(json): Ticket {
+        const ticket: Ticket = new Ticket();
+
+        ticket.setId(json.id);
+
+        if (json.movieScreening) ticket.setMovieScreening(MovieScreening.fromJSON(json.movieScreening));
+        if (json.booking) ticket.setBooking(Booking.fromJSON(json.booking));
+
+        return ticket;
+    }
 }

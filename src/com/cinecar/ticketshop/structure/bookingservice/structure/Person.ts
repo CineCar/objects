@@ -26,4 +26,14 @@ export class Person {
     public setLastname(lastname: string): void {
         this.lastname = lastname;
     }
+
+    public static fromJSON(json): Person {
+        const person: Person = new Person();
+
+        person.setId(json.id);
+        person.setFirstname(json.firstname);
+        person.setLastname(json.lastname);
+
+        return person;
+    }
 }

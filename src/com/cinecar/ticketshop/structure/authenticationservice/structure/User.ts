@@ -1,3 +1,5 @@
+import { userInfo } from "os";
+
 export class User {
     private id: number;
     private password: String;
@@ -16,5 +18,14 @@ export class User {
 
     public setPassword(password: String): void {
         this.password = password;
+    }
+
+    public static fromJSON(json): User {
+        const user: User = new User();
+
+        user.setId(json.id);
+        user.setPassword(json.password);
+
+        return user;
     }
 }

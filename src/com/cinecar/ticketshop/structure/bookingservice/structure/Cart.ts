@@ -28,4 +28,23 @@ export class Cart {
     public setCreationDate(creationDate: Date): void {
         this.creationDate = creationDate;
     }
+
+    public static fromJSON(json): Cart {
+        const cart: Cart = new Cart();
+
+        cart.setCreationDate(json.creationDate);
+        cart.setId(json.id);
+
+        const tickets: Array<Ticket> = [];
+
+        if (json.tickets) {
+            json.tickets.forEach((jsonTicket) => {
+                tickets.push(Ticket.fromJSON(jsonTicket));
+            });
+        }
+
+        cart.setTickets(tickets);
+
+        return cart;
+    }
 }

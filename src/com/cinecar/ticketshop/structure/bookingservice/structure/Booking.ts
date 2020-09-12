@@ -38,4 +38,21 @@ export class Booking {
     public setCancelled(cancelled: boolean): void {
         this.cancelled = cancelled;
     }
+
+    public static fromJSON(json): Booking {
+        const booking: Booking = new Booking();
+
+        booking.setId(json.id);
+        booking.setCancelled(json.cancelled);
+
+        if (json.person) booking.setPerson(Person.fromJSON(json.person));
+        if (json.tickets) {
+            const tickets: Array<Ticket> = [];
+            json.tickets.forEach((jsonTicket) => {
+                tickets.push(Ticket.fromJSON(jsonTicket));
+            });
+        }
+
+        return booking;
+    }
 }

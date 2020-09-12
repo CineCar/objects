@@ -56,4 +56,27 @@ export class Movie {
     public setImageUrl(imageUrl: string): void {
         this.imageUrl = imageUrl;
     }
+
+    public static fromJSON(json): Movie {
+        const movie: Movie = new Movie();
+        movie.setId(json.id);
+        movie.setName(json.name);
+        movie.setDuration(json.duration);
+        movie.setPrice(json.price);
+        movie.setImageUrl(json.imageUrl);
+
+        const movieScreenings: Array<MovieScreening> = [];
+
+        if (json.movieScreenings) {
+            json.movieScreenings.forEach((jsonMovieScreening) => {
+                const movieScreening: MovieScreening = MovieScreening.fromJSON(jsonMovieScreening);
+                movieScreening.setMovie(movie);
+                movieScreenings.push(movieScreening);
+            });
+        }
+
+        movie.setMovieScreenings(movieScreenings);
+
+        return movie;
+    }
 }

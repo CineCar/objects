@@ -28,4 +28,17 @@ export class MovieScreening {
     public setDatetime(datetime: Date): void {
         this.datetime = datetime;
     }
+
+    public static fromJSON(json): MovieScreening {
+        const movieScreening: MovieScreening = new MovieScreening();
+
+        movieScreening.setId(json.id);
+        movieScreening.setDatetime(json.datetime);
+
+        if (json.movie) {
+            movieScreening.setMovie(Movie.fromJSON(json.movie));
+        }
+
+        return movieScreening;
+    }
 }
