@@ -32,7 +32,7 @@ export class MovieScreening {
     public toJSON(parent: boolean = false): any {
         let json = {
             id: this.id,
-            name: this.datetime,
+            datetime: this.datetime,
         };
 
         if (parent) {
