@@ -36,7 +36,7 @@ export class Ticket {
             movieScreening: this.movieScreening.toJSON(true),
         };
 
-        if (parent) {
+        if (this.booking && parent) {
             json["booking"] = this.booking.toJSON();
         }
 
